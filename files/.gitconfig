@@ -1,0 +1,7 @@
+[credential]
+	helper = store
+	useHttpPath = true
+[core]
+	editor = vim
+[user]
+	name = Jasper Andrew

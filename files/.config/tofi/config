@@ -1,0 +1,15 @@
+## https://github.com/philj56/tofi/blob/master/doc/tofi.5.md
+
+width = 100%
+height = 100%
+border-width = 0
+outline-width = 0
+padding-left = 30%
+padding-top = 30%
+result-spacing = 10
+num-results = 10
+font = "Fira Code Nerd Font"
+background-color = #000A
+selection-color = #26f954ff
+
+drun-launch = true
