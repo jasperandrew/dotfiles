@@ -6,3 +6,12 @@
 [user]
 	name = Jasper Andrew
 	email = jqaxyz@gmail.com
+[alias]
+	br = branch
+	ch = checkout
+	cm = commit
+	cmm = commit -m
+	cma = commit --amend
+	cmam = commit --amend -m
+	st = status
+	aa = add -A
