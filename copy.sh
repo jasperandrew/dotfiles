@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
-filepaths[0]='.config/fish/config.fish'
-filepaths[1]='.config/kitty/kitty.conf'
-filepaths[2]='.config/starship.toml'
-filepaths[3]='.config/hypr/hyprland.conf'
-filepaths[4]='.config/hypr/hyprpaper.conf'
-filepaths[5]='.config/waybar/config.jsonc'
-filepaths[6]='.config/waybar/style.css'
-filepaths[7]='.config/tofi/config'
-filepaths[8]='.config/yazi/yazi.toml'
-filepaths[9]='.mozilla/firefox/s8csmeui.default-release/chrome/userChrome.css'
-filepaths[10]='.gitconfig'
+declare -a filepaths=()
+filepaths+=('.config/fish/config.fish')
+filepaths+=('.config/hypr/hyprland.conf')
+filepaths+=('.config/hypr/hyprpaper.conf')
+filepaths+=('.config/kitty/kitty.conf')
+filepaths+=('.config/mako/config')
+filepaths+=('.config/starship.toml')
+filepaths+=('.config/tofi/config')
+filepaths+=('.config/waybar/config.jsonc')
+filepaths+=('.config/waybar/style.css')
+filepaths+=('.config/yazi/yazi.toml')
+filepaths+=('.gitconfig')
+filepaths+=('.mozilla/firefox/s8csmeui.default-release/chrome/userChrome.css')
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 

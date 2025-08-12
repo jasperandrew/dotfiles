@@ -56,6 +56,7 @@
 		"custom/nvidia",
 		"cpu",
 		"clock",
+		"custom/notifications",
 		"custom/updates"
 	],
 	"custom/updates": {
@@ -64,6 +65,21 @@
 		"hide-empty-text": true,
 		"on-click": "kitty fish -c 'echo Upgrading packages...; yay -Syu; echo Done - Press enter to exit; read -p \"\"'",
 		"interval": 3600
+	},
+	"custom/notifications": {
+		"tooltip": false,
+		"format": "{icon} <small>{text}</small>",
+		"format-icons": {
+			"some": "󰅸",
+			"none": "󰂜"
+		},
+		"exec-if": "which makoctl",
+		"exec": "echo \\{\\\"text\\\": \\\"$(makoctl list | grep 'Urgency: normal\\|Urgency: critical' | wc -l)\\\", \\\"alt\\\": \\\"$(makoctl list | grep -P 'Notification \\d+:' | wc -l | sed 's/^0$/none/g' | sed 's/^[0-9]\\+$/some/g')\\\"\\}",
+		"return-type": "json",
+		"on-click": "fish -c \"switch $(makoctl mode | sed -r 's/^hide-(.+)$/\\1/g'); case none; echo low; case low; echo normal; case normal; echo all; case all; echo none; end | xargs -I{} makoctl mode -s 'hide-'{} | xargs -I{} notify-send -u low -c 'notify-mode' -t 2000 $(makoctl list | grep -B 2 'notify-mode' | grep 'Notification ' | head -n 1 | sed -r 's/^.* ([0-9]+).*$/-r \\1/g') 'Notify mode --> '{}\"",
+		"on-click-right": "makoctl dismiss -a",
+		"on-click-middle": "",
+		"interval": 1
 	},
 	"clock": {
 		"format": "{:%X}",
@@ -185,26 +201,6 @@
 		"show-passive-items": true
 	}
 
-	// "custom/notification": {
-	// 	"tooltip": false,
-	// 	"format": "{icon}",
-	// 	"format-icons": {
-	// 		"notification": "󰅸",
-	// 		"none": "󰂜",
-	// 		"dnd-notification": "󰅸",
-	// 		"dnd-none": "󱏨",
-	// 		"inhibited-notification": "󰅸",
-	// 		"inhibited-none": "󰂜",
-	// 		"dnd-inhibited-notification": "󰅸",
-	// 		"dnd-inhibited-none": "󱏨"
-	// 	},
-	// 	"return-type": "json",
-	// 	"exec-if": "which swaync-client",
-	// 	"exec": "swaync-client -swb",
-	// 	"on-click-right": "swaync-client -d -sw",
-	// 	"on-click": "swaync-client -t -sw",
-	// 	"escape": true
-	// },
 	// "custom/notifications": {
 	// 	"format": "{icon} {}",
 	// 	"rotate": 0,

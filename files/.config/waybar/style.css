@@ -55,8 +55,11 @@ tooltip {
 	margin-right: 10px;
 }
 
-#clock {
+#custom-notifications {
 	margin-right: 10px;
+}
+
+#clock {
 	padding-top: 1px;
 }
 
@@ -65,6 +68,7 @@ tooltip {
 	margin-right: 13px;
 }
 
+#clock,
 #memory,
 #disk,
 #network,
