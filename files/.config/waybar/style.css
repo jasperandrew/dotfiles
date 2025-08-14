@@ -1,13 +1,14 @@
 * {
 	font-family: "Fira Code Nerd Font";
 	font-size: 15px;
-	color: #bebebe;
+	color: #a182ed;
 	margin: 0;
 	padding: 0;
 }
 
 window#waybar {
-	background: #191925;
+	/* background: #05030e; */
+	background: rgba(5,3,14,0.7);
 	border-radius: 5px;
 }
 

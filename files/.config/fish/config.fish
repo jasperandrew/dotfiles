@@ -6,7 +6,7 @@ source /usr/share/cachyos-fish-config/conf.d/done.fish
 
 ## Run fastfetch as welcome message
 function fish_greeting
-    fastfetch
+    cat .config/fastfetch/the-ship-logo.txt | fastfetch --logo-width 52 --logo-height 28 --raw -
 end
 
 # Format man pages
@@ -137,5 +137,6 @@ alias tb='nc termbin.com 9999'
 alias jctl='journalctl -p 3 -xb'
 
 alias shebang='echo "#!/usr/bin/env bash"'
+alias matrix='tmatrix -c default -C black -t "" -r 1,2 -s 60 -f 0.1,0.2'
 
 starship init fish | source

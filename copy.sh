@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
 declare -a filepaths=()
+filepaths+=('.config/eza/theme.yml')
+filepaths+=('.config/fastfetch/config.jsonc')
+filepaths+=('.config/fastfetch/the-ship-logo.txt')
 filepaths+=('.config/fish/config.fish')
 filepaths+=('.config/hypr/hyprland.conf')
 filepaths+=('.config/hypr/hyprpaper.conf')
 filepaths+=('.config/kitty/kitty.conf')
+filepaths+=('.config/kitty/theme-fold.conf')
 filepaths+=('.config/mako/config')
 filepaths+=('.config/starship.toml')
 filepaths+=('.config/tofi/config')

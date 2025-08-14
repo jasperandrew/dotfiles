@@ -5,8 +5,9 @@ output=DP-2
 max-visible=10
 default-timeout=0
 
-format=<b>%s</b>\n%b
+format=<b>[%a] %s</b>\n%b
 font=FiraCode Nerd Font 10
+icons=0
 
 text-color=#d0cce5
 background-color=#2e2944ee
@@ -20,7 +21,7 @@ on-button-middle=exec makoctl menu -n "$id" tofi
 
 #group-by=app-name
 [grouped]
-format=<b>%s</b>\n%b\n(+%g more)
+format=<b>[%a] %s</b>\n%b\n(+%g more)
 
 [hidden]
 format=+%h more
