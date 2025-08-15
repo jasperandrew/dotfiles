@@ -1,30 +1,51 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  "logo": {
-    "type": "command-raw",
-    "source": "cat ascii-ship.txt"
-  },
   "display": {
     "key": {
-      "width": 14,
+      "width": 13,
       "type": "both"
+    },
+    "separator": " ",
+    "color": {
+      "keys": "blue"
     }
   },
   "modules": [
-    "title",
+    {
+      "type": "title",
+      
+      "format": "{full-user-name} ({user-name-colored}{at-symbol-colored}{host-name-colored})"
+    },
+    {
+      "type": "datetime",
+      "key": " ",
+      "format": "{weekday-short} {month-pretty}/{day-pretty}/{year-short} {hour-pretty}:{minute-pretty}:{second-pretty}{offset-from-utc}"
+    },
     "separator",
     "os",
     "kernel",
+    {
+      "type": "bios",
+      "key": "BIOS",
+      "format": "{type} {version} {release} ({vendor})"
+    },
+    {
+      "type": "bootmgr",
+      "key": "Boot",
+      "format": "{name} ({firmware-name})"
+    },
     "shell",
     "terminal",
     "lm",
     "wm",
     "cursor",
     {
-      "type": "mouse",
-      "condition": {}
+      "type": "bluetoothradio",
+      "key": "BT Radio",
+      "format": "{name} {version} ({vendor})"
     },
     "keyboard",
+    "camera",
     {
       "type": "display",
       "key": "Display {}",
@@ -32,9 +53,10 @@
     },
     "board",
     "cpu",
-    "gpu",
+    { "type": "gpu", "format": "{vendor} {name} (open {driver~21,30})" },
     { "type": "memory", "key": "RAM" },
-    { "type": "disk", "key": "/{name}" },
+    { "type": "btrfs", "key": "/{name}", "format": "{used} / {total} ({used-percentage}, {allocated-percentage} alloc.) - btrfs" },
+    { "type": "disk", "key": "/{name}", "hideFS": "btrfs" },
     "break",
     "colors"
   ]

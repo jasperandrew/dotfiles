@@ -6,7 +6,7 @@ source /usr/share/cachyos-fish-config/conf.d/done.fish
 
 ## Run fastfetch as welcome message
 function fish_greeting
-    cat .config/fastfetch/the-ship-logo.txt | fastfetch --logo-width 52 --logo-height 28 --raw -
+    cat .config/fastfetch/the-ship-logo.txt | fastfetch --logo-width 56 --logo-height 30 --raw -
 end
 
 # Format man pages
@@ -95,17 +95,15 @@ end
 
 # util
 alias pls='sudo'
-alias x='exit'
 alias c='clear'
 
 # ls -> eza
-alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
-alias la='eza -aa --color=always --group-directories-first --icons'  # all files and dirs
-alias ll='eza -l --color=always --group-directories-first --icons'  # long format
-alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
-alias lf='eza -bl --color=always --group-directories-first --icons' # tree listing
-alias l.='eza -al | grep --color=none -e " \."'                                   # show only dotfiles
-alias l= 'ls'
+alias ls='eza -l --color=always --group-directories-first --icons' # preferred listing
+alias la='eza -laa --color=always --group-directories-first --icons'  # all files and dirs
+alias ll='eza -la --color=always --group-directories-first --icons'  # long format
+alias lt='eza -aT --color=always --group-directories-first --icons -L' # tree listing, with depth
+alias lta='eza -aT --color=always --group-directories-first --icons' # tree listing, full depth
+alias l='ll'
 
 # cd prev dirs
 alias ..='cd ..'
@@ -138,5 +136,9 @@ alias jctl='journalctl -p 3 -xb'
 
 alias shebang='echo "#!/usr/bin/env bash"'
 alias matrix='tmatrix -c default -C black -t "" -r 1,2 -s 60 -f 0.1,0.2'
+alias paclist='yay -Qi | grep -E "(Name|Description)" | sed -r "s/Name.*: (.*)/\1/g" | sed -r "s/Description.*: (.*)/\t\1/g" > paclist.txt; echo Generated ~/paclist.txt'
+
+
+### === === Starship === === ###
 
 starship init fish | source

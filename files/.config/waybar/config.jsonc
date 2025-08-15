@@ -47,8 +47,8 @@
 	// *** RIGHT MODULES *** //
 	"modules-right": [
 		"tray",
-		"upower",
 		"pulseaudio",
+		"upower",
 		"privacy",
 		"network",
 		"disk",
@@ -169,6 +169,12 @@
 		],
 		"ignore": []
 	},
+	"upower": {
+		"format": "󰁹<small>{percentage}</small>",
+		"native-path": "/org/bluez/hci0/dev_90_DA_07_54_60_DF", // Jbuds
+		"tooltip": false,
+		"show-icon": false
+	},
 	"pulseaudio": {
 		"format": "{icon}  <small>{volume}</small>",
 		"format-muted": "{icon} ",
@@ -188,12 +194,6 @@
 			"speaker": "󰓃",
 			"default": "󱄠"
 		}
-	},
-	"upower": {
-		"format": "󰂯󰁹<small>{percentage}</small>",
-		"native-path": "/org/bluez/hci0/dev_90_DA_07_54_60_DF", // Jbuds
-		"tooltip": true,
-		"show-icon": false
 	},
 	"tray": {
 		"icon-size": 17,

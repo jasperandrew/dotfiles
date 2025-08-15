@@ -102,11 +102,10 @@
 # broken_path_overlay: { foreground: "#ff007c" }
 
 filenames:
-  buildfiles: {icon: {glyph: }}
   desktop: {icon: {glyph: }}
   documents: {icon: {glyph: 󱔗}}
   downloads: {icon: {glyph: }}
-  dropbox-bak: {icon: {glyph: 󰇣}}
+  dropbox: {icon: {glyph: 󰇣}}
   music: {icon: {glyph: }}
   pictures: {icon: {glyph: }}
   public: {icon: {glyph: 󰡉}}
