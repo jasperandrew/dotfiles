@@ -74,9 +74,12 @@ tooltip {
 #disk,
 #network,
 #privacy,
-#upower,
 #tray {
 	margin-right: 17px;
+}
+
+#network {
+	margin-left: 17px;
 }
 
 #pulseaudio {

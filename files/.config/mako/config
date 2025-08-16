@@ -9,10 +9,10 @@ format=<b>[%a] %s</b>\n%b
 font=FiraCode Nerd Font 10
 icons=0
 
-text-color=#d0cce5
-background-color=#2e2944ee
-border-color=#4b456dee
-progress-color=source #4b456dee
+text-color=#b8a3ed
+background-color=#05030ecc
+progress-color=source #1f1a35dd
+border-color=#161420ee
 
 border-size=1
 border-radius=5
@@ -25,27 +25,19 @@ format=<b>[%a] %s</b>\n%b\n(+%g more)
 
 [hidden]
 format=+%h more
-text-color=#e5ccdf
-background-color=#44293dee
-border-color=#724e69ee
 
 [urgency=low]
-text-color=#ccd5e5
-background-color=#293344ee
-border-color=#45536dee
-progress-color=source #45536dee
 
 [urgency=critical]
 default-timeout=0
-text-color=#e5ccdf
-background-color=#44293dee
-border-color=#724e69ee
-progress-color=source #724e69ee
+border-color=#993a7188
+border-size=2
 
 [app-name=kitty urgency=normal]
 default-timeout=5000
 
-####   HIDE LEVELS   ####
+
+####   NOTIFY MODE   ####
 
 [mode=hide-low]
 invisible=0
@@ -61,8 +53,8 @@ invisible=0
 invisible=1
 
 [category=notify-mode]
+format=<b>%s</b>
 invisible=0
 text-alignment=left
-text-color=#e2e2e2
-background-color=#444444ee
-border-color=#727272ee
+background-color=#05030eee
+border-color=#161420ee
