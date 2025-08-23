@@ -78,7 +78,7 @@
 		"exec": "checkupdates | wc -l | sed 's/^0$//g'",
 		"hide-empty-text": true,
 		"on-click": "kitty fish -c 'echo Upgrading packages...; yay -Syu; echo Done - Press enter to exit; read -p \"\"'",
-		"interval": 3600
+		"interval": 86400 // 24 hours
 	},
 	"custom/notifications": {
 		"tooltip": false,

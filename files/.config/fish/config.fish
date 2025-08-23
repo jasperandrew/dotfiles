@@ -6,7 +6,7 @@ source /usr/share/cachyos-fish-config/conf.d/done.fish
 
 ## Run fastfetch as welcome message
 function fish_greeting
-    cat .config/fastfetch/the-ship-logo.txt | fastfetch --logo-width 56 --logo-height 30 --raw -
+    cat .config/fastfetch/the-ship-logo.txt | fastfetch --logo-width 36 --logo-height 30 --raw -
 end
 
 # Format man pages
