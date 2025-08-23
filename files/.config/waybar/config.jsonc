@@ -6,10 +6,24 @@
 
 	// *** LEFT MODULES *** //
 	"modules-left": [
-		"hyprland/workspaces",
+		// "hyprland/workspaces#left",
+		"hyprland/workspaces#main",
 		"hyprland/window"
 	],
-	"hyprland/workspaces": {
+	// "hyprland/workspaces#left": {
+	// 	// "all-outputs": true,
+	// 	"format": "{icon}",
+	// 	"format-icons": {
+	// 		"default": "󰄱",//"",
+	// 		"active": "󰡖"//""
+	// 	},
+	// 	"all-outputs": true
+
+	// 	// "persistent-workspaces": {
+	// 	// 	"DP-2": [2, 3, 4]
+	// 	// }a
+	// },
+	"hyprland/workspaces#main": {
 		// "all-outputs": true,
 		"format": "{icon}",
 		"format-icons": {
@@ -82,8 +96,8 @@
 		"interval": 1
 	},
 	"clock": {
-		"format": "{:%X}",
-		"format-alt": "<small>{:%a %x %X}</small>",
+		"format": "<small>{:%a %x %X}</small>",
+		"format-alt": "<small>{:%x %X%z}</small>",
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"calendar": {
 			"format": {
