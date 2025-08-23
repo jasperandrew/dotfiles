@@ -34,7 +34,7 @@ docopy () {
    for f in "${filepaths[@]}"; do
       echo $SRC/$f "-->" $DST/$f
       mkdir -p $DST/$(dirname $f);
-      rm $DST/$f
+      rm $DST/$f 2> /dev/null
       cp $SRC/$f $DST/$f
    done
 }
