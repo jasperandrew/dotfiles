@@ -42,7 +42,7 @@
     {
       "type": "bluetoothradio",
       "key": "BT Radio",
-      "format": "{name} {version} ({vendor})"
+      "format": "{version} {vendor} ({name})"
     },
     "keyboard",
     "camera",
