@@ -17,11 +17,12 @@ Rectangle {
     readonly property bool allowEmptyPassword: config.boolValue("allowEmptyPassword") || false
     readonly property bool showUserRealName: config.boolValue("showUserRealName") || false
     readonly property var ipaChars: [
-    "ɐ", "ɑ", "ɒ", "æ", "ɓ", "ʙ", "β", "ɔ", "ɕ", "ç", "ɗ", "ɖ", "ð", "ʤ", "ə", "ɘ",
-    "ɚ", "ɛ", "ɜ", "ɝ", "ɞ", "ɟ", "ʄ", "ɡ", "ɠ", "ɢ", "ʛ", "ɦ", "ɧ", "ħ", "ɥ", "ʜ",
-    "ɨ", "ɪ", "ʝ", "ɟ", "ʄ", "ɫ", "ɬ", "ɭ", "ɮ", "ʟ", "ɰ", "ɱ", "ɯ", "ɲ", "ɳ", "ɴ",
-    "ŋ", "ɵ", "ɶ", "ɷ", "ɸ", "ʂ", "ʃ", "ʅ", "ʆ", "ʇ", "θ", "ʉ", "ʊ", "ʋ", "ʌ", "ɣ",
-    "ɤ", "ʍ", "χ", "ʎ", "ʏ", "ʐ", "ʑ", "ʒ", "ʓ", "ʔ", "ʕ", "ʖ", "ʗ", "ʘ", "ʙ", "ʚ"
+        "i","y","ɨ","ʉ","ɯ","u","ɪ","ʏ","ʊ","e","ø","ɘ","ɵ","ɤ","o","ə","ɛ","œ",
+        "ɜ","ɞ","ʌ","ɔ","æ","ɐ","a","ɶ","ɑ","ɒ","p","b","t","d","ʈ","ɖ","c","ɟ",
+        "k","g","q","ɢ","ʔ","m","ɱ","n","ɳ","ɲ","ŋ","ɴ","ʙ","r","ʀ","ⱱ","ɾ","ɽ",
+        "ɸ","β","f","v","θ","ð","s","z","ʃ","ʒ","ʂ","ʐ","ç","ʝ","x","ɣ","χ","ʁ",
+        "ħ","ʕ","h","ɦ","ɬ","ɮ","ʋ","ɹ","ɻ","j","ɰ","l","ɭ","ʎ","ʟ","ʘ","ɓ","ǀ",
+        "ɗ","ǃ","ʄ","ǂ","ɠ","ǁ","ʛ","ʍ","w","ɥ","ʜ","ʢ","ʡ","ɕ","ʑ","ɺ","ɧ"
     ]
     // State management
     property int currentUserIndex: {
@@ -153,8 +154,8 @@ Rectangle {
                     selectByMouse: false
                     selectionColor: "transparent"
                     selectedTextColor: "transparent"
-                    cursorVisible: true
-                    focus: true
+                    cursorVisible: false
+                    focus: false
 
                     onAccepted: attemptLogin()
                     onTextChanged: clearError()
@@ -177,7 +178,8 @@ Rectangle {
                         var displayText = ""
                         // Limit the number of characters based on container width
                         var maxChars = Math.floor((width - 8) / (font.pixelSize * 0.7))
-                        var length = Math.min(passwordInput.text.length, maxChars)
+                        var rand = (passwordInput.text.length === 0 ? 0 : Math.floor(Math.random() * 3))
+                        var length = Math.min(passwordInput.text.length + rand, maxChars)
                         for (var i = 0; i < length; i++) {
                             var randomIndex = Math.floor(Math.random() * ipaChars.length)
                             displayText += ipaChars[randomIndex]
@@ -189,22 +191,6 @@ Rectangle {
             }
 
             // Error message
-            Text {
-                id: errorMessage
-                width: parent.width
-                visible: loginFailed
-                text: ">_> FUCK OFF!!"
-                color: errorColor
-                font.family: fontFamily
-                font.pixelSize: baseFontSize - 1
-                horizontalAlignment: Text.AlignHCenter
-                wrapMode: Text.WordWrap
-
-                opacity: visible ? 1 : 0
-                Behavior on opacity {
-                    NumberAnimation { duration: animationDuration }
-                }
-            }
 
             // Session selector
             SessionSelector {
@@ -323,9 +309,27 @@ Rectangle {
         }
     }
 
+    Timer {
+        id: delayTimer
+    }
+
+    function delay(delayTime, cb) {
+        delayTimer.interval = delayTime;
+        delayTimer.repeat = false;
+        delayTimer.triggered.connect(cb);
+        delayTimer.start();
+    }
+
+    function focusInput() {
+        passwordInput.forceActiveFocus()
+        passwordInput.cursorVisible = false
+    }
+
     // Component initialization
     Component.onCompleted: {
-        passwordInput.forceActiveFocus()
+        delay(100, function() {
+            focusInput()
+        })
         validateConfiguration()
         console.log("Theme initialized. Background:", backgroundImage.source)
     }
@@ -406,7 +410,7 @@ Rectangle {
 
         errorBorder.border.width = 3
         errorBorderTimer.start()
-        passwordInput.forceActiveFocus()
+        focusInput()
     }
 
     function handleLoginSucceeded() {
