@@ -1,0 +1,11 @@
+filenames:
+  desktop: {icon: {glyph: }}
+  documents: {icon: {glyph: 󱔗}}
+  downloads: {icon: {glyph: }}
+  dropbox: {icon: {glyph: 󰇣}}
+  music: {icon: {glyph: }}
+  pictures: {icon: {glyph: }}
+  public: {icon: {glyph: 󰡉}}
+  templates: {icon: {glyph: }}
+  videos: {icon: {glyph: }}
+  workspace: {icon: {glyph: 󰛨}}

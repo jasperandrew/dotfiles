@@ -1,0 +1,4 @@
+#!/bin/sh
+# Xstop - run as root after stopping X
+xrandr --output DP-0 --primary
+xrandr --output HDMI-0 --on

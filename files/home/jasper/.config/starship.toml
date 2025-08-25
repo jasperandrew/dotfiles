@@ -1,0 +1,87 @@
+# # Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# # Inserts a blank line between shell prompts
+# add_newline = true
+
+# # Replace the '❯' symbol in the prompt with '➜'
+# [character] # The name of the module we are configuring is 'character'
+# success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+# # Disable the package module, hiding it from the prompt completely
+# [package]
+# disabled = true
+
+
+format = """
+[ ](bg:#38323a)\
+[ ](bg:#574f5b)\
+[ ](bg:#77697e)\
+[](fg:#987fa5 bg:#8457a8)\
+$directory\
+[](fg:#8457a8 bg:#3f3444)\
+$git_branch\
+$git_status\
+[](fg:#3f3444 bg:#231e26)\
+$nodejs\
+$rust\
+$golang\
+$php\
+[](fg:#231e26 bg:#1f1a22)\
+$time\
+[ ](fg:#1f1a22)\
+\n$character"""
+# [ test ](fg:#8a68a4 bg:#231e26)\
+
+[directory]
+style = "fg:#d7b7ef bg:#8457a8"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"desktop" = " "
+"documents" = "󱔗 "
+"downloads" = " "
+"dropbox" = "󰇣 "
+"music" = " "
+"pictures" = " "
+"public" = "󰡉 "
+"templates" = " "
+"videos" = " "
+"workspace" = "󰛨 "
+
+[git_branch]
+symbol = ""
+style = "bg:#3f3444"
+format = '[[ $symbol $branch ](fg:#925ebb bg:#3f3444)]($style)'
+
+[git_status]
+style = "bg:#3f3444"
+format = '[[($all_status$ahead_behind )](fg:#925ebb bg:#3f3444)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#231e26"
+format = '[[ $symbol ($version) ](fg:#8a68a4 bg:#231e26)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#231e26"
+format = '[[ $symbol ($version) ](fg:#8a68a4 bg:#231e26)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#231e26"
+format = '[[ $symbol ($version) ](fg:#8a68a4 bg:#231e26)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#231e26"
+format = '[[ $symbol ($version) ](fg:#8a68a4 bg:#231e26)]($style)'
+
+[time]
+disabled = false
+time_format = "%X" # Hour:Minute Format
+style = "bg:#1f1a22"
+format = '[[  $time ](fg:#7b5c93 bg:#1f1a22)]($style)'

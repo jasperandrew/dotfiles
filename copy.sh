@@ -1,64 +1,53 @@
 #!/usr/bin/env bash
 
 declare -a filepaths=()
-filepaths+=('.config/eza/theme.yml')
-filepaths+=('.config/fastfetch/config.jsonc')
-filepaths+=('.config/fastfetch/the-ship-logo.txt')
-filepaths+=('.config/fastfetch/the-ship-logo.png')
-filepaths+=('.config/fish/config.fish')
-filepaths+=('.config/hypr/hyprland.conf')
-filepaths+=('.config/hypr/hyprpaper.conf')
-filepaths+=('.config/kitty/kitty.conf')
-filepaths+=('.config/kitty/theme-fold.conf')
-filepaths+=('.config/logid/logid.cfg')
-filepaths+=('.config/mako/config')
-filepaths+=('.config/starship.toml')
-filepaths+=('.config/tofi/config')
-filepaths+=('.config/waybar/config.jsonc')
-filepaths+=('.config/waybar/style.css')
-filepaths+=('.config/yazi/keymap.toml')
-filepaths+=('.config/yazi/yazi.toml')
-filepaths+=('.gitconfig')
-filepaths+=('.mozilla/firefox/s8csmeui.default-release/chrome/userChrome.css')
+filepaths+=('etc/sddm.conf')
+filepaths+=('home/jasper/.config/eza/theme.yml')
+filepaths+=('home/jasper/.config/fastfetch/config.jsonc')
+filepaths+=('home/jasper/.config/fastfetch/the-ship-logo.png')
+filepaths+=('home/jasper/.config/fastfetch/the-ship-logo.txt')
+filepaths+=('home/jasper/.config/fish/config.fish')
+filepaths+=('home/jasper/.config/hypr/')
+filepaths+=('home/jasper/.config/kitty/kitty.conf')
+filepaths+=('home/jasper/.config/kitty/theme-fold.conf')
+filepaths+=('home/jasper/.config/logid/logid.cfg')
+filepaths+=('home/jasper/.config/mako/config')
+filepaths+=('home/jasper/.config/starship.toml')
+filepaths+=('home/jasper/.config/tofi/config')
+filepaths+=('home/jasper/.config/waybar/config.jsonc')
+filepaths+=('home/jasper/.config/waybar/style.css')
+filepaths+=('home/jasper/.config/yazi/keymap.toml')
+filepaths+=('home/jasper/.config/yazi/yazi.toml')
+filepaths+=('home/jasper/.gitconfig')
+filepaths+=('home/jasper/.mozilla/firefox/s8csmeui.default-release/chrome/userChrome.css')
+filepaths+=('home/jasper/pictures/wallpapers/foldward/')
+filepaths+=('usr/share/sddm/scripts/Xsetup')
+filepaths+=('usr/share/sddm/scripts/Xstop')
+filepaths+=('usr/share/sddm/themes/bg.png')
+filepaths+=('usr/share/sddm/themes/obscure/')
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+REPO_ROOT_DIR=$SCRIPT_DIR/files
 
 help () {
-   echo "help"
+   echo "usage: $0 [up|down]"
 }
 
 docopy () {
-   # echo Clearing old files...
-   # rm -r $SCRIPT_DIR/files/* 2> /dev/null
+   echo Clearing $REPO_ROOT_DIR...
+   rm -rf $REPO_ROOT_DIR 2> /dev/null
+   mkdir $REPO_ROOT_DIR
+
+   SRC=
+   DST=$REPO_ROOT_DIR
 
    echo Copying from $SRC to $DST...
    for f in "${filepaths[@]}"; do
       echo $SRC/$f "-->" $DST/$f
       mkdir -p $DST/$(dirname $f);
       rm $DST/$f 2> /dev/null
-      cp $SRC/$f $DST/$f
+      cp -r $SRC/$f $DST/$f
    done
 }
 
-up () {
-   SRC=$HOME
-   DST=$SCRIPT_DIR/files
-   docopy
-}
-
-down () {
-   SRC=$SCRIPT_DIR/files
-   DST=$HOME
-   docopy
-}
-
-if [[ $# -eq 0 ]]; then echo "[Error] Argument required"; help
-elif [[ $# -eq 1 ]]; then
-
-	if [[ $1 == "up" ]]; then up
-	elif [[ $1 == "down" ]]; then down
-	else echo "[Error] Invalid argument"; help
-	fi
-
-else echo "[Error] Too many arguments"; help
-fi
+docopy
