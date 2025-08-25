@@ -110,7 +110,7 @@ Rectangle {
         // Login container
         Column {
             id: loginContainer
-            width: Math.min(400, parent.width * 0.7)
+            width: parent.width * 0.7
             anchors.centerIn: parent
             spacing: 28
 
@@ -134,8 +134,7 @@ Rectangle {
                 height: 56
                 color: Qt.rgba(1, 1, 1, 0)
                 radius: 8
-                border.color: passwordInput.activeFocus ? textColor : Qt.rgba(1, 1, 1, 0.2)
-                border.width: 1
+                border.width: 0
 
                 Behavior on border.color {
                     ColorAnimation { duration: 200 }
@@ -186,7 +185,7 @@ Rectangle {
                         }
                         return displayText
                     }
-                    clip: true  // Ensure text doesn't overflow
+                    clip: false  // Ensure text doesn't overflow
                 }
             }
 
