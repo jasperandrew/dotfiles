@@ -42,18 +42,21 @@
     {
       "type": "bluetoothradio",
       "key": "BT Radio",
-      "format": "{version} {vendor} ({name})"
+      "format": "{version} ({name})"
     },
-    "keyboard",
-    "camera",
+    {
+      "type": "camera",
+      "key": "Camera",
+      "format": "{name~19,29} {width}x{height} {colorspace}"
+    },
     {
       "type": "display",
-      "key": "Display {}",
+      "key": "Display",
       "format": "{width}x{height} @ {refresh-rate}{?hdr-enabled} +HDR{?} ({ppi} ppi)"
     },
     "board",
     "cpu",
-    { "type": "gpu", "format": "{vendor} {name} (open {driver~21,30})" },
+    { "type": "gpu", "format": "{vendor} {name~21,39} ({driver})" },
     { "type": "memory", "key": "RAM" },
     { "type": "btrfs", "key": "/{name}", "format": "{used} / {total} ({used-percentage}, {allocated-percentage} alloc.) - btrfs" },
     { "type": "disk", "key": "/{name}", "hideFS": "btrfs" },

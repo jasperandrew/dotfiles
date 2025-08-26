@@ -1,7 +1,7 @@
 max-history=100
 sort=-time
 
-output=DP-1
+output=DP-2
 max-visible=10
 default-timeout=0
 

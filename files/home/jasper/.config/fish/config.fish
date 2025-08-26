@@ -6,7 +6,7 @@ source /usr/share/cachyos-fish-config/conf.d/done.fish
 
 ## Run fastfetch as welcome message
 function fish_greeting
-    cat .config/fastfetch/the-ship-logo.txt | fastfetch --logo-width 43 --logo-height 30 --raw -
+    cat .config/fastfetch/the-ship-logo.txt | fastfetch --logo-width 36 --logo-height 26 --raw -
 end
 
 # Format man pages
@@ -138,7 +138,19 @@ alias shebang='echo "#!/usr/bin/env bash"'
 alias matrix='tmatrix -c default -C black -t "" -r 1,2 -s 60 -f 0.1,0.2'
 alias paclist='yay -Qi | grep -E "(Name|Description)" | sed -r "s/Name.*: (.*)/\1/g" | sed -r "s/Description.*: (.*)/\t\1/g" > paclist.txt; echo Generated ~/paclist.txt'
 
-
-### === === Starship === === ###
+# conda init slows down shell startup
+alias init-conda='eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source'
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# if test -f /opt/miniconda3/bin/conda
+#     eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# else
+#     if test -f "/opt/miniconda3/etc/fish/conf.d/conda.fish"
+#         . "/opt/miniconda3/etc/fish/conf.d/conda.fish"
+#     else
+#         set -x PATH "/opt/miniconda3/bin" $PATH
+#     end
+# end
+# <<< conda initialize <<<
 
 starship init fish | source

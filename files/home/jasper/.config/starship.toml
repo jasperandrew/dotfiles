@@ -27,6 +27,7 @@ $nodejs\
 $rust\
 $golang\
 $php\
+$conda\
 [](fg:#231e26 bg:#1f1a22)\
 $time\
 [ ](fg:#1f1a22)\
@@ -79,6 +80,11 @@ format = '[[ $symbol ($version) ](fg:#8a68a4 bg:#231e26)]($style)'
 symbol = ""
 style = "bg:#231e26"
 format = '[[ $symbol ($version) ](fg:#8a68a4 bg:#231e26)]($style)'
+
+[conda]
+symbol = ""
+style = "bg:#231e26"
+format = '[[ $symbol $environment ](fg:#8a68a4 bg:#231e26)]($style)'
 
 [time]
 disabled = false
